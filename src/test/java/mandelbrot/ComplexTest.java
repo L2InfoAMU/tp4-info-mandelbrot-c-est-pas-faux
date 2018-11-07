@@ -28,6 +28,24 @@ public class ComplexTest {
     }
 
     @Test
+    void testZero(){
+        assertEquals(0, Complex.ZERO.getReal());
+        assertEquals(0, Complex.ZERO.getImaginary());
+    }
+
+    @Test
+    void testOne(){
+        assertEquals(1., Complex.ONE.getReal());
+        assertEquals(0., Complex.ONE.getImaginary());
+    }
+
+    @Test
+    void testI(){
+        assertEquals(0, Complex.I.getReal());
+        assertEquals(1, Complex.I.getImaginary());
+    }
+
+    @Test
     void testGetReal(){
         assertEquals(2., two.getReal(), Helpers.EPSILON);
         assertEquals(1., oneMinusI.getReal(), Helpers.EPSILON);
@@ -44,21 +62,26 @@ public class ComplexTest {
     }
 
     @Test
-    void testOne(){
-        assertEquals(1., Complex.ONE.getReal());
-        assertEquals(0., Complex.ONE.getImaginary());
+    void testRotation(){
+        assertEquals(Complex.I, Complex.rotation(Math.PI/2));
+        assertEquals(minusI, Complex.rotation(-Math.PI/2));
+        assertEquals(Complex.ONE, Complex.rotation(0));
+        assertEquals(new Complex(Math.sqrt(2)/2., Math.sqrt(2)/2.),
+                Complex.rotation(Math.PI/4));
+        assertEquals(new Complex(1./2., Math.sqrt(3)/2.),
+                Complex.rotation(Math.PI/3));
     }
 
     @Test
-    void testI(){
-        assertEquals(0, Complex.I.getReal());
-        assertEquals(1, Complex.I.getImaginary());
+    void testReal(){
+
     }
 
     @Test
-    void testZero(){
-        assertEquals(0, Complex.ZERO.getReal());
-        assertEquals(0, Complex.ZERO.getImaginary());
+    void testAdd(){
+        assertEquals(Complex.ONE,Complex.ZERO.add(Complex.ONE));
+        assertEquals(onePlusI,Complex.ONE.add(Complex.I));
+
     }
 
     @Test
@@ -67,6 +90,37 @@ public class ComplexTest {
         assertEquals(Complex.I, minusI.negate());
         assertEquals(new Complex(-1, 1), oneMinusI.negate());
         assertEquals(new Complex(real, imaginary), new Complex(-real,-imaginary).negate());
+    }
+
+    @Test
+    void testConjugate(){
+        assertEquals(Complex.ZERO, Complex.ZERO.conjugate());
+        assertEquals(Complex.ONE, Complex.ONE.conjugate());
+        assertEquals(onePlusI, oneMinusI.conjugate());
+        assertEquals(new Complex(real, -imaginary), new Complex(real, imaginary).conjugate());
+    }
+
+    @Test
+    void testSubstract(){
+        assertEquals(minusOne, Complex.ZERO.subtract(Complex.ONE));
+        assertEquals(oneMinusI, Complex.ONE.subtract(Complex.I));
+        assertEquals(new Complex(real-1,imaginary-1),
+                new Complex(real, imaginary).subtract(onePlusI));
+    }
+
+    @Test
+    void testMultiply(){
+
+    }
+
+    @Test
+    void testSquareModulus(){
+
+    }
+
+    @Test
+    void testModulus() {
+
     }
 
     @Test
@@ -83,21 +137,6 @@ public class ComplexTest {
     }
 
     @Test
-    void testAdd(){
-        assertEquals(Complex.ONE,Complex.ZERO.add(Complex.ONE));
-        assertEquals(onePlusI,Complex.ONE.add(Complex.I));
-
-    }
-
-    @Test
-    void testSubstract(){
-        assertEquals(minusOne, Complex.ZERO.subtract(Complex.ONE));
-        assertEquals(oneMinusI, Complex.ONE.subtract(Complex.I));
-        assertEquals(new Complex(real-1,imaginary-1),
-                new Complex(real, imaginary).subtract(onePlusI));
-    }
-
-    @Test
     void testDivide(){
         assertEquals(onePlusI, onePlusI.divide(Complex.ONE));
         assertEquals(new Complex(0.5, 0), Complex.ONE.divide(two));
@@ -110,29 +149,19 @@ public class ComplexTest {
     }
 
     @Test
-    void testConjugate(){
-        assertEquals(Complex.ZERO, Complex.ZERO.conjugate());
-        assertEquals(Complex.ONE, Complex.ONE.conjugate());
-        assertEquals(onePlusI, oneMinusI.conjugate());
-        assertEquals(new Complex(real, -imaginary), new Complex(real, imaginary).conjugate());
+    void testPow() {
+
     }
 
     @Test
-    void testRotation(){
-        assertEquals(Complex.I, Complex.rotation(Math.PI/2));
-        assertEquals(minusI, Complex.rotation(-Math.PI/2));
-        assertEquals(Complex.ONE, Complex.rotation(0));
-        assertEquals(new Complex(Math.sqrt(2)/2., Math.sqrt(2)/2.),
-                Complex.rotation(Math.PI/4));
-        assertEquals(new Complex(1./2., Math.sqrt(3)/2.),
-                Complex.rotation(Math.PI/3));
+    void testScale() {
+        Complex c1 = new Complex(4, 0);
+        assertEquals(Complex.ZERO, onePlusI.scale(0));
+        assertEquals(c1, two.scale(2));
     }
 
     @Test
-    void testToString(){
-        assertEquals("Complex{real=1.0, imaginary=-1.0}", oneMinusI.toString());
-        assertEquals("Complex{real="+real+", imaginary="+imaginary+"}", new Complex(real, imaginary).toString());
-    }
+    void testEquals() {}
 
     @Test
     void testHashCode() {
@@ -142,9 +171,12 @@ public class ComplexTest {
     }
 
     @Test
-    void testScale() {
-        Complex c1 = new Complex(4, 0);
-        assertEquals(Complex.ZERO, onePlusI.scale(0));
-        assertEquals(c1, two.scale(2));
+    void testToString(){
+        assertEquals("Complex{real=1.0, imaginary=-1.0}", oneMinusI.toString());
+        assertEquals("Complex{real="+real+", imaginary="+imaginary+"}", new Complex(real, imaginary).toString());
     }
+
+
+
+
 }
