@@ -156,7 +156,7 @@ public class Complex {
             throw new ArithmeticException("divide by zero");
         }
         double m = this.squaredModulus();
-        return new Complex(this.real / m, this.imaginary / m);
+        return new Complex(this.real / m, -this.imaginary / m);
     }
 
     /**
