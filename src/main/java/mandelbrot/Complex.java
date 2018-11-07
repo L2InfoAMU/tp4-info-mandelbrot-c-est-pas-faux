@@ -219,7 +219,6 @@ public class Complex {
         return Objects.hash(real, imaginary);
     }
 
-
     @Override
     public String toString() {
         return "Complex{" +
