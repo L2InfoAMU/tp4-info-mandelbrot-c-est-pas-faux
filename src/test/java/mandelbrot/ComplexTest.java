@@ -75,6 +75,9 @@ public class ComplexTest {
     @Test
     void testReal(){
 
+        assertEquals(two, Complex.real(2));
+        assertEquals(Complex.ZERO, Complex.real(0));
+
     }
 
     @Test
@@ -162,7 +165,10 @@ public class ComplexTest {
     }
 
     @Test
-    void testEquals() {}
+    void testEquals() {
+        assertEquals(true,Complex.ONE.equals(Complex.ONE));
+
+    }
 
     @Test
     void testHashCode() {
