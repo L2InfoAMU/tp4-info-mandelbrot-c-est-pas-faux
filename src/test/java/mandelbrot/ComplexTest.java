@@ -158,6 +158,7 @@ public class ComplexTest {
         Complex c1 = new Complex(4, 0);
         assertEquals(Complex.ZERO, onePlusI.scale(0));
         assertEquals(c1, two.scale(2));
+        assertEquals(two.scale(2), c1);
     }
 
     @Test
