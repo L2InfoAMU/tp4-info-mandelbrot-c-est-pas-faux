@@ -125,7 +125,9 @@ public class ComplexTest {
 
     @Test
     void testModulus() {
-
+        assertEquals(0,Complex.ZERO.modulus());
+        assertFalse(oneMinusI.modulus()<0);
+        assertEquals(Math.sqrt(13),new Complex(2,3).modulus());
     }
 
     @Test
