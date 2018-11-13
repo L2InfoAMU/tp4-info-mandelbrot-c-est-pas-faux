@@ -72,16 +72,13 @@ public class ComplexTest {
 
     @Test
     void testReal(){
-
-        assertEquals(two, Complex.real(2));
-        assertEquals(Complex.ZERO, Complex.real(0));
-
     }
 
     @Test
     void testAdd(){
         assertEquals(Complex.ONE,Complex.ZERO.add(Complex.ONE));
         assertEquals(onePlusI,Complex.ONE.add(Complex.I));
+        assertEquals(Complex.ONE.add(Complex.I), onePlusI);
 
     }
 
@@ -157,7 +154,11 @@ public class ComplexTest {
 
     @Test
     void testPow() {
-
+        Complex c1 = new Complex(0, -2);
+        Complex c2 = new Complex(-2, -2);
+        assertEquals(Complex.ONE, oneMinusI.pow(0));
+        assertEquals(c1, oneMinusI.pow(2));
+        assertEquals(c2, oneMinusI.pow(3));
     }
 
     @Test
@@ -169,10 +170,7 @@ public class ComplexTest {
     }
 
     @Test
-    void testEquals() {
-        assertEquals(true,Complex.ONE.equals(Complex.ONE));
-
-    }
+    void testEquals() {}
 
     @Test
     void testHashCode() {
