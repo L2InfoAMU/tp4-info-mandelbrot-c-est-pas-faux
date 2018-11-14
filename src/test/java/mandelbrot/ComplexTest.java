@@ -170,7 +170,10 @@ public class ComplexTest {
     }
 
     @Test
-    void testEquals() {}
+    void testEquals() {
+        assertEquals(1, oneMinusI.getReal());
+        assertEquals(-1, oneMinusI.getImaginary());
+    }
 
     @Test
     void testHashCode() {
@@ -184,8 +187,4 @@ public class ComplexTest {
         assertEquals("Complex{real=1.0, imaginary=-1.0}", oneMinusI.toString());
         assertEquals("Complex{real="+real+", imaginary="+imaginary+"}", new Complex(real, imaginary).toString());
     }
-
-
-
-
 }
