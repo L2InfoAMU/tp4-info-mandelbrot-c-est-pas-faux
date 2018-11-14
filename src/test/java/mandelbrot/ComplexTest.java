@@ -72,6 +72,8 @@ public class ComplexTest {
 
     @Test
     void testReal(){
+        assertEquals(new Complex(4,0),Complex.ZERO.real(4));
+        assertEquals(new Complex(4,0),new Complex(3,2).real(4));
     }
 
     @Test

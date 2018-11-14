@@ -1,5 +1,7 @@
 package mandelbrot;
 
+import javafx.scene.Camera;
+
 import java.util.Objects;
 
 /**
@@ -226,4 +228,7 @@ public class Complex {
                 ", imaginary=" + imaginary +
                 '}';
     }
+
+
+
 }

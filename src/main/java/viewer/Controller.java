@@ -27,6 +27,20 @@ public class Controller implements Initializable {
     @FXML
     private Canvas canvas; /* The canvas to draw on */
 
+
+   /* public Camera userView (double centerX, double centerY, double width, double aspectRatio){
+
+        Camera userView=new Camera();
+
+        return
+    }*/
+
+
+
+
+
+
+
     private Camera camera = Camera.camera0; /* The view to display */
 
     private Mandelbrot mandelbrot = new Mandelbrot(); /* the algorithm */
